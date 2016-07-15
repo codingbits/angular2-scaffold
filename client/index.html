@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Twizzle UI</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+<!--     <script src="/scripts/es6-shim/es6-shim.min.js"></script>
+    <script src="/scripts/systemjs/dist/system-polyfills.js"></script>
+    <script src="/scripts/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+    <script src="/scripts/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="/scripts/systemjs/dist/system.src.js"></script>
+    <script src="/scripts/rxjs/bundles/Rx.js"></script>
+    <script src="/scripts/angular2/bundles/angular2.dev.js"></script>
+    <script src="/scripts/angular2/bundles/router.dev.js"></script>
+    <script src="/scripts/angular2/bundles/http.js"></script> -->
+    <script src="http://localhost:9091"></script>  
+    <script src="/scripts/core-js/client/shim.min.js"></script>
+    <script src="/scripts/zone.js/dist/zone.js"></script>
+    <script src="/scripts/reflect-metadata/Reflect.js"></script>
+    <script src="/scripts/systemjs/dist/system.src.js"></script>
+
+
+    <!-- 2. Configure SystemJS -->
+   <script>
+        (function(global) {
+          // map tells the System loader where to look for things
+          var map = {
+            'app':                        'app', // 'dist',
+            '@angular':                   'scripts/@angular',
+            'angular2-in-memory-web-api': 'scripts/angular2-in-memory-web-api',
+            'rxjs':                       'scripts/rxjs'
+          };
+          // packages tells the System loader how to load when no filename and/or no extension
+          var packages = {
+            'app':                        { main: 'main.js',  defaultExtension: 'js' },
+            'rxjs':                       { defaultExtension: 'js' },
+            'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+          };
+          var ngPackageNames = [
+            'common',
+            'compiler',
+            'core',
+            'http',
+            'platform-browser',
+            'platform-browser-dynamic',
+            'router',
+            'router-deprecated',
+            'upgrade',
+          ];
+          // Individual files (~300 requests):
+          function packIndex(pkgName) {
+            packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
+          }
+          // Bundled (~40 requests):
+          function packUmd(pkgName) {
+            packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+          };
+          // Most environments should use UMD; some (Karma) need the individual index files
+          var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
+          // Add package entries for angular packages
+          ngPackageNames.forEach(setPackageConfig);
+          var config = {
+            map: map,
+            packages: packages
+          }
+          System.config(config);
+        })(this);
+
+        System.import('app').catch(function(err){ console.error(err); });
+  </script>
+  <link rel="stylesheet" href="assets/app.css">
+
+</head>
+
+<body>
+    <app></app>
+</body>
+</html>
+
